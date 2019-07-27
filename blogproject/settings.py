@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a8y-*phul+$=k)(l5_b3uemure5hr4
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) ) # 해로쿠 배포
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*] # 헤로쿤
 
 
 # Application definition
