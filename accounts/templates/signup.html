@@ -1,0 +1,26 @@
+{% extends 'base.html' %} <!-- navbar 가져오기 -->
+
+{% block contents %}
+
+<div class="container">
+<h1>Sing Up! </h1>
+
+<form action="{% url 'accounts:signup' %}" method="POST"> <!-- signup이라는 url로 보내겠다, 생성이므로 POST -->
+    {% csrf_token %} <!-- 보안을 위해서 써주는 난수발생기, crsf공격을 방어하는 수단 -->
+    Username:
+    <br>
+    <input type="text" name="username" value="">
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password1" value="">
+    <br>
+    Confirm Password:
+    <br>
+    <input type="password" name="password2" value="">
+    <br>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Sign Up!">
+</form>
+</div>
+{% endblock %}

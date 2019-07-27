@@ -1,0 +1,22 @@
+{% extends 'base.html' %} <!-- navbar 가져오기 -->
+
+{% block contents %}
+
+<div class="container">
+<h1>Login! </h1>
+
+<form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    Username:
+    <br>
+    <input type="text" name="username" value="">
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password1" value="">
+    <br>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Login">
+</form>
+</div>
+{% endblock %}

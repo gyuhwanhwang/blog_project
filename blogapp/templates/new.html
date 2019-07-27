@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block contents%}
+
+<br>
+<div class="container">
+    <form method="POST">
+    {% csrf_token %}    {# POST 방식 보안 기능 더해줌 #}
+    <table>
+        {{form.as_table}}   {# table 형식으로 표시됨 #}
+    </table>
+    <br>
+    <input type="submit" class="btn btn-dark" value="제출하기">
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} <!-- base.html을 불러오는 명령 (extends는 다른 태그보다 우선순위가 높다) -->
+
+{% block contents %} <!-- 이 부분이 contents라고 명시 -->
+<body>        
+    <!-- card -->
+    {# for blog in blogs.all #}
+    {% for blog in posts %} <!-- 순회 대상 변경, 한 페이지를 대상 -->
+    <div class="container">
+        <br><br>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{blog.title}}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h6>
+                <p class="card-text">{{blog.summary}}</p>
+                <a href="{% url 'blogapp:detail' blog.id %}" class="card-link">...more</a>
+            </div>
+        </div>
+    </div>    
+    {% endfor %}
+
+    {# 주석 가능 #}
+    <!-- First Previous 현재페이지of전체페이지 Next Last -->
+    <div class="container">
+            <!-- First Previous -->
+        {% if posts.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{posts.previous_page_number}}">Previous</a>
+        {% endif %}
+
+            <!-- 현재페이지of전체페이지 -->
+        <span>{{posts.number}}</span>   {# 현재 보고 있는 페이지 번호 반환 #}
+        <span>of</span>
+        <span>{{posts.paginator.num_pages}}</span>
+
+            <!-- Next Last -->
+        {% if posts.has_next %}
+        <a href="?page={{posts.next_page_number}}">Next</a>
+        <a href="?page={{posts.paginator.num_pages}}">Last</a> {# 전체 페이지 수 걸어줌#}
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
